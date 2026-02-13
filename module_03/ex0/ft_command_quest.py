@@ -1,7 +1,7 @@
 import sys
 
 
-def main():
+def main() -> None:
     print("=== Command Quest ===")
 
     total_args: int = len(sys.argv)
@@ -12,7 +12,8 @@ def main():
         print(f"Arguments received: {total_args - 1}")
         i: int = 1
         while (i < total_args):
-            print(f"Arguments {i}: {sys.argv[i]}")
+            print(f"Argument {i}: {sys.argv[i]}")
+            i += 1
     print(f"Total arguments: {total_args}")
 
 
