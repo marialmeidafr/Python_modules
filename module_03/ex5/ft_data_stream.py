@@ -2,15 +2,16 @@ from typing import Generator
 
 
 def generator_event(limit: int) -> Generator[tuple, None, None]:
-    
+
     players = ["alice", "bob", "charlie", "teddy", "amy"]
     events = ["killed monster", "found treasure", "leveled up"]
-    
+
     for i in range(1, limit + 1):
         player = players[i % len(players)]
         level = (i * 7) % 25
         event_type = events[i % len(events)]
         yield (i, player, level, event_type)
+
 
 def generator_fibonacci(n: int) -> Generator[int, None, None]:
     a, b = 0, 1
@@ -18,7 +19,8 @@ def generator_fibonacci(n: int) -> Generator[int, None, None]:
         yield a
         a, b = b, a + b
 
-def generator_prime(n: int) -> Generator[int, None, None]:    
+
+def generator_prime(n: int) -> Generator[int, None, None]:
     count = 0
     num = 2
     while count < n:
@@ -29,6 +31,7 @@ def generator_prime(n: int) -> Generator[int, None, None]:
             yield num
             count += 1
         num += 1
+
 
 def game_process() -> None:
     print("=== Game Data Stream Processor ===")
@@ -44,7 +47,7 @@ def game_process() -> None:
             print(f"Event {i}: Player {player} (level {level}) {event}")
         elif i == 4:
             print("...")
-        
+
         if level >= 10:
             high_level_event += 1
         elif event == "found treasure":
@@ -68,10 +71,6 @@ def game_process() -> None:
     prime_list = [str(x) for x in generator_prime(5)]
     print(f"Prime numbers (first 5): {', '.join(prime_list)}")
 
+
 if __name__ == "__main__":
     game_process()
-
-
-
-
-
