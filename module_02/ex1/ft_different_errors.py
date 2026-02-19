@@ -2,9 +2,9 @@ def garden_operations(error: str) -> None:
     """error types"""
 
     if error == "ValueError":
-        int("it's not a int")
+        int("it's not an int")
     elif error == "ZeroDivisionError":
-        print(42 / 0)
+        _ = 42 / 0
     elif error == "FileNotFoundError":
         open("missing.txt")
     elif error == "KeyError":
@@ -45,7 +45,7 @@ def test_error_types() -> None:
     error_name: str = "KeyError"
     try:
         garden_operations(error_name)
-    except (KeyError, ZeroDivisionError, FileNotFoundError, KeyError):
+    except (KeyError, ZeroDivisionError, FileNotFoundError):
         print("Caught an error, but program continues!\n")
 
     print("All error types tested successfully")

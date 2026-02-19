@@ -3,7 +3,7 @@ def create_archive(filename: str, content: str) -> None:
     try:
         print("=== CYBER ARCHIVES - PRESERVATION SYSTEM ===")
         print(f"Initializing new storage unit: {filename}")
-        file: str = open(filename, 'w')
+        file = open(filename, 'w')
         print("Storage unit created successfully...")
         print()
         print("Inscribing preservation data...")
@@ -14,10 +14,11 @@ def create_archive(filename: str, content: str) -> None:
     except PermissionError:
         print(f"ERROR: Security protocols deny write access to '{filename}'.")
     except Exception as error:
-        print(f"RITICAL ERROR: Failed to create archive: {error}")
+        print(f"CRITICAL ERROR: Failed to create archive: {error}")
     finally:
         if file:
             file.close()
+
 
 if __name__ == "__main__":
     archive_name: str = "new_discovery.txt"
