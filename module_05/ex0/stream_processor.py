@@ -96,7 +96,7 @@ if __name__ == "__main__":
 
     tests = [
         (p_num, [1, 2, 3, 4, 5]),
-        (p_text,"Hello Nexus World"),
+        (p_text, "Hello Nexus World"),
         (p_log, "ERROR: Connection timeout")
     ]
 
