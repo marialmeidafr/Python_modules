@@ -7,7 +7,7 @@ def main() -> None:
     print("=== DataDeck Ability System ===")
     print()
     print("EliteCard capabilities:")
-    
+
     cards_methods = ['play', 'get_card_info', 'is_playable']
 
     combat_methods = []
@@ -19,7 +19,7 @@ def main() -> None:
     for method in dir(Magical):
         if not method.startswith('_'):
             magic_methods.append(method)
-    
+
     print(f"- Card: {cards_methods}")
     print(f"- Combatable: {combat_methods}")
     print(f"- Magical: {magic_methods}")

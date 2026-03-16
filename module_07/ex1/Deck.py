@@ -1,60 +1,57 @@
 import random
-from ..ex0.Card import Card
-from ..ex0.CreatureCard import CreatureCard
-from .SpellCard import SpellCard
-from .ArtifactCard import ArtifactCard
+from ex0.Card import Card
 
 
 class Deck:
-    def __init__(self):
-        self.cards: list[Card] = []
-
+    def __init__(self) -> None:
+        self._cards: list[Card] = []
 
     def add_card(self, card: Card) -> None:
-        self.cards.append(card)
-
+        self._cards.append(card)
 
     def remove_card(self, card_name: str) -> bool:
-        for i, card in enumerate(self.card):
+        for i, card in enumerate(self._cards):
             if card.name == card_name:
-                self.cards.pop(i)
+                self._cards.pop(i)
                 return True
         return False
-    
 
     def shuffle(self) -> None:
-        random.shuffle(self.cards)
-
+        random.shuffle(self._cards)
 
     def draw_card(self) -> Card:
-        if not self.cards:
-            raise IndexError("Deck is empty")
-        return self.cards.pop()
-    
+        return self._cards.pop(0)
 
     def get_deck_stats(self) -> dict:
-        total_cards = len(self.cards)
-        info = {
-            "total_cards": total_cards,
-            "creatures": 0,
-            "spells": 0,
-            "artifacts": 0,
-            "avg_cost": 0.0
-        }
+        total = len(self._cards)
+        if total == 0:
+            return {"total_cards": 0, "avg_cost": 0.0}
 
-        if total_cards == 0:
-            return info
-
+        creatures = 0
+        spells = 0
+        artifacts = 0
         total_cost = 0
-        for card in self.cards:
+
+        from ex1.SpellCard import SpellCard
+        from ex1.ArtifactCard import ArtifactCard
+        from ex0.CreatureCard import CreatureCard
+
+        for card in self._cards:
             total_cost += card.cost
 
             if isinstance(card, CreatureCard):
-                info["creatures"] += 1
+                creatures += 1
             elif isinstance(card, SpellCard):
-                info["spells"] += 1
+                spells += 1
             elif isinstance(card, ArtifactCard):
-                info["artifacts"] += 1
-        info["avg_cost"] = round(float(total_cost / total_cards), 1)
-        
-        return info
+                artifacts += 1
+
+        avg_cost = total_cost / total
+
+        return {
+            "total_cards": total,
+            "creatures": creatures,
+            "spells": spells,
+            "artifacts": artifacts,
+            "avg_cost": round(avg_cost, 1)
+        }
