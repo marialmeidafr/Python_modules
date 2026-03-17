@@ -14,7 +14,7 @@ class FantasyCardFactory(CardFactory):
         ]
         self._spells = [
             ("Fireball", 4, "Rare", "damage"),
-            ("Goblin Bolt", 2, "Commom", 2, 2),
+            ("Goblin Bolt", 2, "Commom", "damage"),
         ]
         self._artifacts = [
             ("Mana Ring", 2, "Rare", 6, "+1 mana per turn"),
@@ -43,7 +43,7 @@ class FantasyCardFactory(CardFactory):
 
     def create_artifact(self, name_or_power: str | int | None = None) -> Card:
         if isinstance(name_or_power, str):
-            for name, cost, rarity, dur, eff, in self._artifacts:
+            for name, cost, rarity, dur, eff in self._artifacts:
                 if name == name_or_power:
                     return ArtifactCard(name, cost, rarity, dur, eff)
 
@@ -62,7 +62,7 @@ class FantasyCardFactory(CardFactory):
                 deck.append(self.create_spell())
             elif pick == 'artifact':
                 deck.append(self.create_artifact())
-        return {'size': size, 'cards': deck}
+        return {'size': size, 'card': deck}
 
     def get_supported_types(self) -> dict:
         return {
