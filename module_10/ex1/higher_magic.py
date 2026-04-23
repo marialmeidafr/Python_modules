@@ -52,20 +52,21 @@ def heal(target: str, power: int) -> str:
 
 def main() -> None:
     """Run a small demo of higher-order spell helpers."""
-    test_values = [3, 10, 18]
-    test_targets = ['Dragon', 'Goblin', 'Wizard', 'Knight']
     print("Testing spell combiner...")
     combiner = spell_combiner(spell, heal)
+    res1, res2 = combiner("Dragon", 3)
     print(
-        f"Combined spell result: {combiner(test_targets[0], test_values[0])}"
+        "Combined spell result: "
+        f"{res1} | {res2}"
     )
     print()
     print("Testing power amplifier...")
     multiplier = 3
-    amplifier = power_amplifier(spell, multiplier)
+    power_amplifier(spell, multiplier)
+    power_input = 10
     print(
-        f"Original: {test_values[1]}, "
-        f"Amplified: {amplifier(test_targets[1], test_values[1])}"
+        f"Original: {power_input}, "
+        f"Amplified: {power_input * multiplier}"
     )
     print()
     print("Testing conditional caster...")
@@ -74,19 +75,22 @@ def main() -> None:
         return power > 10
 
     conditional = conditional_caster(power_limit, spell)
+    target_name = "Wizard"
+    val1, val2 = 10, 18
+
     print(
-        f"Target {test_targets[2]} with power {test_values[1]}: "
-        f"{conditional(test_targets[2], test_values[1])}"
+        f"Target {target_name} with power {val1}: "
+        f"{conditional(target_name, val1)}"
     )
     print(
-        f"Target {test_targets[2]} with power {test_values[2]}: "
-        f"{conditional(test_targets[2], test_values[2])}"
+        f"Target {target_name} with power {val2}: "
+        f"{conditional(target_name, val2)}"
     )
     print()
     print("Testing spell sequence...")
     grimoire = [spell, heal, spell]
     sequence = spell_sequence(grimoire)
-    print(f"Sequence results: {sequence(test_targets[3], test_values[0])}")
+    print(f"Sequence results: {sequence('Knight', 3)}")
 
 
 if __name__ == "__main__":
