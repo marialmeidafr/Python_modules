@@ -1,7 +1,7 @@
 <h1 align="center">🐍 Python Mastery: From Core to Architecture</h1>
 
-<p>
-  <i>This repository is a comprehensive documentation of my journey through the Python ecosystem.</i>
+<p align="center">
+  <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGJqaWsxbnViZzdkZnR0YmluNm1jdG9uY3E1MHkwanE2ajR4dmFncSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xKzprg2YY9QHJ4cEsO/giphy.gif" width="400" alt="fun gif"/>
 </p>
 
 ## 🗂️ Repository Roadmap
